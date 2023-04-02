@@ -6,11 +6,12 @@ import pokemonListSelectorService from "../../redux/selector/pokemonListSelector
 import { useAppDispatch, useAppSelector } from "../../utils/redux/useApp";
 import Button from "../common/button/Button";
 
-// import Details from "./details/Details";
-// import List from "./list/List";
 import pokedexHelper from "./pokedex.helper";
 import pokedexStyles from "./pokedex.style";
 
+// To code-split in vite just use lazy-load instead of using import
+// import Details from "./details/Details";
+// import List from "./list/List";
 const Details = lazy(() => import("./details/Details"));
 const List = lazy(() => import("./list/List"));
 
