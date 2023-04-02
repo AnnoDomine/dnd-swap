@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, lazy } from "react";
 import { useLoader } from "saga-query/react";
 
 import pokemonSagaService from "../../redux/saga/fetch/pokemonSaga";
@@ -6,10 +6,13 @@ import pokemonListSelectorService from "../../redux/selector/pokemonListSelector
 import { useAppDispatch, useAppSelector } from "../../utils/redux/useApp";
 import Button from "../common/button/Button";
 
-import Details from "./details/Details";
-import List from "./list/List";
+// import Details from "./details/Details";
+// import List from "./list/List";
 import pokedexHelper from "./pokedex.helper";
 import pokedexStyles from "./pokedex.style";
+
+const Details = lazy(() => import("./details/Details"));
+const List = lazy(() => import("./list/List"));
 
 const startPage = 0;
 
