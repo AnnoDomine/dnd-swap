@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import POKEMON_DETAILS_TYPES from "../types/pokemonDetailsTypes";
-import { ReduxAction } from "../../types/redux";
+
+import type { ReduxAction } from "../../types/redux";
 
 const initialState: NPokemonDetails.TPokemonDetails = {};
 

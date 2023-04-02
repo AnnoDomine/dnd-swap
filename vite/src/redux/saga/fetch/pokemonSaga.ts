@@ -1,10 +1,13 @@
-import { delay, put, select } from "redux-saga/effects";
+import {  put, select } from "redux-saga/effects";
+
 import createSagaAction from "../../../utils/redux/createSagaAction";
-import api, { cacheTimer } from "../sagaApi";
-import POKEMON_LIST_TYPES from "../../types/pokemonListTypes";
-import type { ApiCtx, CreateActionWithPayload } from "saga-query/*";
 import pokemonListSelectorService from "../../selector/pokemonListSelector";
 import POKEMON_DETAILS_TYPES from "../../types/pokemonDetailsTypes";
+import POKEMON_LIST_TYPES from "../../types/pokemonListTypes";
+import api, { cacheTimer } from "../sagaApi";
+
+import type { ApiCtx, CreateActionWithPayload } from "saga-query/*";
+
 
 const fetchLimit = 10;
 

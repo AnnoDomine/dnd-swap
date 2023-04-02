@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import POKEMON_LIST_TYPES from "../types/pokemonListTypes";
-import { ReduxAction } from "../../types/redux";
+
+import type { ReduxAction } from "../../types/redux";
 
 const initialState: NPokemonList.IStore = { count: 0, list: [] };
 
@@ -32,12 +34,10 @@ export const pokemonListSlice = createSlice({
             )
             .addCase(
                 POKEMON_LIST_TYPES.SET_POKEMON_COUNT,
-                (state: typeof initialState, action: ReduxAction<NPokemonList.IResponse["count"]>) => {
-                    return {
+                (state: typeof initialState, action: ReduxAction<NPokemonList.IResponse["count"]>) => ({
                         ...state,
                         count: action.payload,
-                    };
-                }
+                    })
             );
     },
 });

@@ -1,19 +1,19 @@
 import { useEffect, useState, useRef } from "react";
-import { useLoader, useQuery } from "saga-query/react";
-import { useAppDispatch, useAppSelector } from "../../utils/redux/useApp";
+import { useLoader } from "saga-query/react";
+
 import pokemonSagaService from "../../redux/saga/fetch/pokemonSaga";
 import pokemonListSelectorService from "../../redux/selector/pokemonListSelector";
-import List from "./list/List";
-import pokedexStyles from "./pokedex.style";
-import pokedexHelper from "./pokedex.helper";
+import { useAppDispatch, useAppSelector } from "../../utils/redux/useApp";
 import Button from "../common/button/Button";
-import Details from "./details/Details";
 
-type Props = {};
+import Details from "./details/Details";
+import List from "./list/List";
+import pokedexHelper from "./pokedex.helper";
+import pokedexStyles from "./pokedex.style";
 
 const startPage = 0;
 
-const Pokedex = (props: Props) => {
+const Pokedex = () => {
     const _isMounted = useRef(true);
 
     const [page, setPage] = useState<number>(startPage);
@@ -34,6 +34,7 @@ const Pokedex = (props: Props) => {
         return () => {
             _isMounted.current = false;
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_isMounted]);
 
     return (

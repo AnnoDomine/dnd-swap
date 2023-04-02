@@ -361,5 +361,5 @@ declare namespace NPokemonDetails {
         weight: 40,
     };
 
-    type TPokemonDetails = typeof ditto | Record<string, any>;
+    type TPokemonDetails = typeof ditto | Record<string, unknown>;
 }

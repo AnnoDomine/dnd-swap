@@ -1,14 +1,15 @@
 import { Skeleton } from "@mui/material";
-import listItemHelper from "./listItem.helper";
+
 import Button from "../../../common/button/Button";
+
+import listItemHelper from "./listItem.helper";
 
 type Props = {
     name: string;
     onClick: () => void;
 };
 
-const ListItem = ({ name, onClick }: Props) => {
-    return (
+const ListItem = ({ name, onClick }: Props) => (
         <Button disabled={name === "loading"} onClick={(e) => listItemHelper.handleOnClick(e, onClick)}>
             {name === "loading" ? (
                 <Skeleton width={"100%"} sx={{ fontSize: "16px" }} />
@@ -17,6 +18,5 @@ const ListItem = ({ name, onClick }: Props) => {
             )}
         </Button>
     );
-};
 
 export default ListItem;

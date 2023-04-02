@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import prepare from "./prepareStore";
-import createSagaMiddleware from "redux-saga";
 import { createLogger } from "redux-logger";
-import type { CurriedGetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
-import rootSaga from "./saga/rootSaga";
+// import createSagaMiddleware from "redux-saga";
 
-const sagaMiddleware = createSagaMiddleware();
+import prepare from "./prepareStore";
+
+import type { CurriedGetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
+
+// const sagaMiddleware = createSagaMiddleware();
 
 const logger = createLogger({
     collapsed: true,

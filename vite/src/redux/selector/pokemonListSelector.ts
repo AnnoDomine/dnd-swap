@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "../appStore";
+
+import type { RootState } from "../appStore";
 
 const selectPokemonList = (state: RootState) => state.pokemonList;
 

@@ -1,10 +1,11 @@
-import type { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import pokemonSagaService from "../../redux/saga/fetch/pokemonSaga";
+
+import type { AnyAction, Dispatch } from "@reduxjs/toolkit";
 
 const changePokedexListPage = (
     change: "prev" | "next",
     dispatch: Dispatch<AnyAction>,
-    page: { page: number; setPage: (page: number) => void }
+    page: { page: number; setPage: (_page: number) => void },
 ) => {
     let changed = 0;
     if (change === "prev") {

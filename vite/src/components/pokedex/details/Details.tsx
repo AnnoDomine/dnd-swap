@@ -1,8 +1,9 @@
-import { useAppSelector } from "../../../utils/redux/useApp";
-import pokemonDetailsSelectorService from "../../../redux/selector/pokemonDetailsSelector";
 import { LinearProgress, Typography } from "@mui/material";
 import { useLoader } from "saga-query/react";
+
 import pokemonSagaService from "../../../redux/saga/fetch/pokemonSaga";
+import pokemonDetailsSelectorService from "../../../redux/selector/pokemonDetailsSelector";
+import { useAppSelector } from "../../../utils/redux/useApp";
 
 type Props = {
     pokemonSelected: string;
