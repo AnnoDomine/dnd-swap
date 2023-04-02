@@ -38,6 +38,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
+                    react: ["react", "react-dom"],
                     mui: ["@mui/material", "@emotion/react", "@emotion/styled"],
                     query: ["saga-query", "react-redux", "@reduxjs/toolkit", "redux-saga"],
                     other: ["notistack"],

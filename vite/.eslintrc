@@ -98,8 +98,9 @@
                 "alphabetize": { "order": "asc" }
             }
         ],
-        // Disallow specified modules when loaded by import
-        // MUIv5 should not be imported above the 2nd level
+        // The ESLint rule no-restricted-imports is used to specify import restrictions.
+        // It's typically used to enforce code consistency or to prevent the use of certain libraries or modules that are considered harmful or deprecated.
+        // The "@mui/*/*/*" pattern matches any subdirectory under the "@mui/" directory, with at least two levels of nesting.
         "no-restricted-imports": [
             "error",
             {

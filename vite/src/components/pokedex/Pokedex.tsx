@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, lazy } from "react";
+import { useEffect, useState, useRef, lazy, useCallback } from "react";
 import { useLoader } from "saga-query/react";
 
 import pokemonSagaService from "../../redux/saga/fetch/pokemonSaga";
@@ -30,15 +30,19 @@ const Pokedex = () => {
 
     const totalPages = (selectPokemonCount / 10).toLocaleString(undefined, { maximumFractionDigits: 0 });
 
+    const dispatchPokemonList = useCallback(
+        () => dispatch(pokemonSagaService.getPokemonList({ offset: startPage })),
+        [dispatch],
+    );
+
     useEffect(() => {
         if (_isMounted) {
-            dispatch(pokemonSagaService.getPokemonList({ offset: startPage }));
+            dispatchPokemonList();
         }
         return () => {
             _isMounted.current = false;
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [_isMounted]);
+    }, [_isMounted, dispatchPokemonList]);
 
     return (
         <div style={{ ...pokedexStyles.pokedexWraperStyle }} data-testid="pokedex">

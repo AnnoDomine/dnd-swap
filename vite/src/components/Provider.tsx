@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@mui/material";
 import { Provider as ReduxProvider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 
 import store from "../redux/store";
 import theme from "../utils/theme";
@@ -14,9 +13,7 @@ type Props = {
 const Provider = ({ children }: Props) => (
     <>
         <ThemeProvider theme={theme}>
-            <ReduxProvider store={store}>
-                <BrowserRouter>{children}</BrowserRouter>
-            </ReduxProvider>
+            <ReduxProvider store={store}>{children}</ReduxProvider>
         </ThemeProvider>
     </>
 );
