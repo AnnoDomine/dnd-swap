@@ -1,14 +1,3 @@
-const optimisticPokedexList = [
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-    { name: "loading", url: "" },
-];
+const optimisticPokedexList = Array.from({ length: 10 }, () => ({ name: "loading", url: "" }));
 
 export default optimisticPokedexList;

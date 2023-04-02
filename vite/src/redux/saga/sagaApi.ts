@@ -9,7 +9,7 @@ api.use(requestMonitor());
 api.use(api.routes());
 api.use(fetcher({ baseUrl: "https://pokeapi.co/api/v2/" }));
 
-// this will only activate the endpoint at most once every 5 minutes.
+// This will only activate the endpoint at most once every 5 minutes.
 export const cacheTimer = timer(5 * 60 * 1000);
 
 export default api;
