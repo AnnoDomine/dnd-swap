@@ -31,14 +31,30 @@
     "plugins": ["import", "react", "@typescript-eslint", "autofix", "react-hooks"],
     "rules": {
         // Add your own rules here to override ones from the extended configs.
+        // ----------------------------------------------------------------
+        // This rule ensures that all imported modules are valid and can be resolved by the module loader.
+        // The configuration options allow importing CommonJS and AMD modules.
         "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
+        // These rules validate the usage of imported modules.
+        // "import/named" checks that all named imports exist in the imported module.
+        // "import/namespace" ensures that all namespace imports exist in the imported module.
+        // "import/default" checks the usage of default imports.
+        // "import/export" ensures that all exported modules are valid.
         "import/named": 2,
         "import/namespace": 2,
         "import/default": 2,
         "import/export": 2,
+        // This rule is specific to React applications and ensures that the React variable is in scope when using JSX.
+        // This configuration disables the rule because it is no longer necessary in React 18.
         "react/react-in-jsx-scope": "off",
+        // This rule ensures that all dependencies of a React useEffect or useLayoutEffect hook are included in the dependency array.
+        // This helps prevent unexpected behavior due to stale closures.
         "react-hooks/exhaustive-deps": "error",
+        // This rule enforces a consistent style for arrow functions.
+        // This configuration requires braces only when the function body has more than one statement.
         "arrow-body-style": ["error", "as-needed"],
+        // This rule enforces the use of self-closing tags for components that do not have children.
+        // This configuration applies to both React components and HTML tags.
         "react/self-closing-comp": [
             "error",
             {
@@ -46,6 +62,8 @@
                 "html": true
             }
         ],
+        // This rule ensures that all declared variables are used in the code.
+        // This configuration allows ignoring variables that start with an underscore and destructured arrays with ignored elements.
         "autofix/no-unused-vars": [
             "error",
             {
@@ -54,12 +72,17 @@
                 "destructuredArrayIgnorePattern": "^_"
             }
         ],
+        // This rule is specific to TypeScript and ensures consistent usage of type imports.
+        // This configuration prefers importing types with the type keyword.
         "@typescript-eslint/consistent-type-imports": [
             "error",
             {
                 "prefer": "type-imports"
             }
         ],
+        // This rule enforces a consistent order for imports.
+        // This configuration groups imports by type and sorts them alphabetically.
+        // It also moves imports from the @ root directory to the parent group and enforces a newline between groups.
         "import/order": [
             "error",
             {
@@ -73,6 +96,14 @@
                     }
                 ],
                 "alphabetize": { "order": "asc" }
+            }
+        ],
+        // Disallow specified modules when loaded by import
+        // MUIv5 should not be imported above the 2nd level
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@mui/*/*/*"]
             }
         ]
     }

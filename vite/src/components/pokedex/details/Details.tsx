@@ -3,6 +3,7 @@ import { useLoader } from "saga-query/react";
 
 import pokemonSagaService from "../../../redux/saga/fetch/pokemonSaga";
 import pokemonDetailsSelectorService from "../../../redux/selector/pokemonDetailsSelector";
+import { isTypeOf } from "../../../utils/functions/typeCheck";
 import { useAppSelector } from "../../../utils/redux/useApp";
 
 type Props = {
@@ -11,12 +12,13 @@ type Props = {
 
 const Details = ({ pokemonSelected }: Props) => {
     const selectedPokemon: NPokemonDetails.TPokemonDetails = useAppSelector(
-        pokemonDetailsSelectorService.fetchedPokemon
+        pokemonDetailsSelectorService.fetchedPokemon,
     );
 
     const selectedLoading = useLoader(pokemonSagaService.getPokemonDetails({ name: pokemonSelected }));
 
     if (Object.keys(selectedPokemon).length === 0) return <>Not fetched</>;
+    if (!isTypeOf<NPokemonDetails.TPokemonResponse>(selectedPokemon)) return <></>;
 
     return (
         <>
@@ -68,7 +70,7 @@ const Details = ({ pokemonSelected }: Props) => {
                     }}
                 >
                     Types:
-                    {selectedPokemon.types.map((type: NPokemonDetails.TPokemonDetails["types"]) => (
+                    {selectedPokemon.types.map((type) => (
                         <Typography key={type.type.name}>{type.type.name}</Typography>
                     ))}
                 </div>
@@ -81,7 +83,7 @@ const Details = ({ pokemonSelected }: Props) => {
                     }}
                 >
                     Stats:
-                    {selectedPokemon.stats.map((stat: NPokemonDetails.TPokemonDetails["stats"]) => (
+                    {selectedPokemon.stats.map((stat) => (
                         <div
                             key={stat.stat.name}
                             style={{
