@@ -19,5 +19,5 @@
         "declaration": true,
         "declarationMap": true
     },
-    "include": ["src", "node_modules/@types/**/*", "src/types"]
+    "include": ["src", "node_modules/@types/**/*", "src/types", "src/setupTest.ts"]
 }

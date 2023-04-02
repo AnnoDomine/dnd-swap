@@ -34,11 +34,11 @@ const Pokedex = () => {
         return () => {
             _isMounted.current = false;
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_isMounted]);
 
     return (
-        <div style={{ ...pokedexStyles.pokedexWraperStyle }}>
+        <div style={{ ...pokedexStyles.pokedexWraperStyle }} data-testid="pokedex">
             <div style={{ ...pokedexStyles.pokedexListWraperStyle }}>
                 <List list={selectPokemonPage} isLoading={pageLoading.isLoading} pokemonSelected={setPokemonSelected} />
                 <div style={{ ...pokedexStyles.pokedexListButtons }}>
