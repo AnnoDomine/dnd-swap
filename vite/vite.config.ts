@@ -10,8 +10,11 @@ import viteTsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
     // Inject vite plugins
     plugins: [
+        // Base vite plugin for reactjs
         react(),
+        // Base vite plugin for typescript
         viteTsconfigPaths(),
+        // Plugin to inject custom font-families from files
         Unfonts({
             custom: {
                 families: [{ name: "Arcade", local: "Arcade", src: "./public/fonts/*.ttf" }],
@@ -20,7 +23,9 @@ export default defineConfig({
                 injectTo: "head-prepend",
             },
         }),
+        // ESLint-Plugin
         eslint(),
+        // Helper for vitest to create a static overview as page with component tests
         Inspect(),
     ],
     // Config vitest
@@ -37,6 +42,7 @@ export default defineConfig({
         outDir: "build",
         rollupOptions: {
             output: {
+                // Chunking of packages
                 manualChunks: {
                     react: ["react", "react-dom"],
                     mui: ["@mui/material", "@emotion/react", "@emotion/styled"],
@@ -48,6 +54,7 @@ export default defineConfig({
     },
     // Config development options
     server: {
+        // Automatic opens the app in default browser when developing environment running
         open: true,
         port: 3000,
     },

@@ -13,14 +13,14 @@ export const pokemonListSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(
-                POKEMON_LIST_TYPES.GET_POKEMON_LIST,
+                POKEMON_LIST_TYPES.SET_POKEMON_LIST,
                 (state: typeof initialState, action: ReduxAction<NPokemonList.IResponse["results"]>) => {
                     const list = action.payload;
                     return {
                         ...state,
                         list,
                     };
-                }
+                },
             )
             .addCase(
                 POKEMON_LIST_TYPES.ADD_POKEMON_TO_LIST,
@@ -30,14 +30,14 @@ export const pokemonListSlice = createSlice({
                         ...state,
                         list,
                     };
-                }
+                },
             )
             .addCase(
                 POKEMON_LIST_TYPES.SET_POKEMON_COUNT,
                 (state: typeof initialState, action: ReduxAction<NPokemonList.IResponse["count"]>) => ({
-                        ...state,
-                        count: action.payload,
-                    })
+                    ...state,
+                    count: action.payload,
+                }),
             );
     },
 });
